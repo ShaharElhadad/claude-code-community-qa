@@ -8,7 +8,7 @@
 <meta property="og:title" content="Community Q&A — Claude Code הקהילה">
 <meta property="og:description" content="מפגש Zoom בלעדי לחברי הקהילה. יום רביעי 6.5 בשעה 19:00. שאלו כל מה שבא לכם.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="images/claude-code-terminal.webp">
+<meta property="og:image" content="images/claude-routines.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
@@ -235,7 +235,7 @@ nav.scrolled {
 .hero-bg { position: absolute; inset: 0; z-index: 0; }
 .hero-bg-img {
   position: absolute; inset: -10%; width: 120%; height: 120%;
-  background: url('images/claude-code-terminal.webp') center/cover no-repeat;
+  background: url('images/claude-routines.jpg') center/cover no-repeat;
   will-change: transform;
 }
 .hero-bg-overlay {
@@ -718,7 +718,7 @@ footer {
       <span id="hero-desc">בלי פילטרים. בלי גבולות. שאלו כל מה שבא לכם, גם את השאלה הכי בסיסית. אין שאלות טיפשיות, יש רק שאלות שלא שואלים.</span>
     </p>
     <div class="hero-host" id="hero-host">
-      <div class="host-avatar"><img src="images/shahar-avatar.jpg" alt="שחר אלחדד" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.textContent='שא'"></div>
+      <a href="https://www.instagram.com/shahar_elhadad" target="_blank" rel="noopener" class="host-avatar" data-hover style="text-decoration:none;"><img src="images/shahar-avatar.jpg" alt="שחר אלחדד" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.textContent='שא'"></a>
       <div class="host-info">
         <span class="host-name">שחר אלחדד</span>
         <a href="https://www.instagram.com/shahar_elhadad" target="_blank" class="host-handle" data-hover>@shahar_elhadad</a>
@@ -813,7 +813,7 @@ footer {
   <div class="details-layout">
     <div style="position:relative;">
       <div class="details-img-wrap" id="details-image" data-hover>
-        <img src="images/claude-code-desktop.png" alt="Claude Code desktop" loading="lazy">
+        <img src="images/claude-web.webp" alt="Claude Code app" loading="lazy">
         <span class="details-badge">Community Only</span>
       </div>
       <div class="details-decor"></div>
@@ -940,7 +940,7 @@ footer {
       </ol>
     </div>
     <div class="how-visual rv" id="how-visual">
-      <img src="images/claude-code-vscode.webp" alt="Claude Code in VS Code" loading="lazy">
+      <img src="images/claude-slack.webp" alt="Claude in Slack" loading="lazy">
       <div class="how-visual-overlay"></div>
       <div class="how-visual-label">Live Q&A</div>
     </div>
@@ -1036,6 +1036,27 @@ footer {
   </div>
 </footer>
 
+<script>
+// Preloader safety net — guarantees the page is interactive even if
+// GSAP/Lenis fails or rAF is throttled (e.g. tab loaded in background).
+// Runs independently so any error in the main IIFE below cannot prevent it.
+setTimeout(function() {
+  var p = document.getElementById('preloader');
+  if (p && !p.classList.contains('done')) {
+    p.classList.add('done');
+    var fadeIns = document.querySelectorAll('#hero-host, #hero-actions, #hero-scroll, #hero-eyebrow, #hero-desc');
+    fadeIns.forEach(function(el) { el.style.opacity = '1'; });
+    document.querySelectorAll('.hero-title .line-inner').forEach(function(el) {
+      el.style.transform = 'translateY(0)';
+      el.style.opacity = '1';
+    });
+    var heroEm = document.createElement('style');
+    heroEm.textContent = '.hero-title em::after { transform: scaleX(1) !important; }';
+    document.head.appendChild(heroEm);
+    document.querySelectorAll('.rv, .rv-stagger').forEach(function(el) { el.classList.add('vis'); });
+  }
+}, 3500);
+</script>
 <script src="https://unpkg.com/lenis@1.3.21/dist/lenis.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/ScrollTrigger.min.js"></script>
