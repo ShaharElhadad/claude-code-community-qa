@@ -2,207 +2,302 @@
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Q&A לחברי הקהילה | Claude Code הקהילה</title>
 <meta name="description" content="מפגש Q&A בלעדי לחברי קהילת Claude Code הקהילה. יום רביעי 6.5 בשעה 19:00. שעה של שאלות ותשובות על הכל.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&family=Assistant:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--gold:#D4A853;--gold-light:#F0D78C;--gold-dark:#B8922E;--bg-dark:#0D0D0D;--bg-card:#1A1A1A;--border:#333;--border-gold:rgba(212,168,83,0.3);--text:#F5F5F5;--text-muted:#999;--text-dim:#666;--green:#4ADE80;--blue:#60A5FA;--purple:#A78BFA}
-html{scroll-behavior:smooth}
-body{font-family:'Heebo',sans-serif;background:var(--bg-dark);color:var(--text);line-height:1.7;overflow-x:hidden;-webkit-text-size-adjust:100%}
-
-.hero{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 20px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 50% 50%,rgba(212,168,83,0.08) 0%,transparent 50%);animation:pulse-bg 8s ease-in-out infinite}
-@keyframes pulse-bg{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.1)}}
-
-.community-badge{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;background:linear-gradient(135deg,rgba(212,168,83,0.15),rgba(240,215,140,0.08));border:1px solid var(--border-gold);border-radius:100px;font-size:14px;font-weight:600;color:var(--gold);margin-bottom:32px;position:relative;z-index:1}
-.community-badge svg{width:16px;height:16px}
-
-.live-badge{display:none;align-items:center;gap:8px;padding:10px 24px;background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.4);border-radius:100px;font-size:15px;font-weight:700;color:#EF4444;margin-bottom:32px;position:relative;z-index:1;animation:live-pulse 2s infinite}
-.live-dot{width:10px;height:10px;background:#EF4444;border-radius:50%;animation:live-dot-pulse 1.5s infinite}
-@keyframes live-pulse{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,0.3)}50%{box-shadow:0 0 20px 4px rgba(239,68,68,0.2)}}
-@keyframes live-dot-pulse{0%,100%{opacity:1}50%{opacity:.3}}
-
-.hero-date{font-size:14px;color:var(--text-dim);margin-bottom:16px;position:relative;z-index:1}
-.hero h1{font-size:clamp(32px,6vw,72px);font-weight:900;line-height:1.15;margin-bottom:20px;position:relative;z-index:1}
-.hero h1 span{background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero p{font-size:clamp(16px,2.5vw,22px);color:var(--text-muted);max-width:600px;margin-bottom:40px;position:relative;z-index:1;font-weight:300}
-
-.scroll-hint{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);color:var(--text-dim);font-size:13px;display:flex;flex-direction:column;align-items:center;gap:8px;animation:bounce 2s infinite;z-index:1}
-@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(10px)}}
-.scroll-hint svg{width:20px;height:20px}
-
-.section{max-width:800px;margin:0 auto;padding:80px 20px}
-.section-label{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--gold);text-transform:uppercase;letter-spacing:2px;font-weight:600;margin-bottom:16px}
-.section h2{font-size:clamp(24px,4vw,40px);font-weight:800;margin-bottom:16px;line-height:1.3}
-.section>p{color:var(--text-muted);font-size:17px;margin-bottom:40px;max-width:650px}
-
-.card-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:40px}
-.card-grid.cols-3{grid-template-columns:repeat(3,1fr)}
-.card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;transition:transform .2s,border-color .2s}
-.card:hover{transform:translateY(-2px);border-color:var(--gold)}
-.card-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
-.card-icon.gold{background:rgba(212,168,83,0.15);color:var(--gold)}
-.card-icon.green{background:rgba(74,222,128,0.15);color:var(--green)}
-.card-icon.blue{background:rgba(96,165,250,0.15);color:var(--blue)}
-.card h3{font-size:18px;font-weight:700;margin-bottom:8px}
-.card p{color:var(--text-muted);font-size:15px;line-height:1.6}
-
-.event-details{background:var(--bg-card);border:1px solid var(--border-gold);border-radius:16px;padding:40px;margin-bottom:40px;position:relative;overflow:hidden}
-.event-details::before{content:'';position:absolute;top:0;right:0;width:200px;height:200px;background:radial-gradient(circle,rgba(212,168,83,0.1) 0%,transparent 70%);pointer-events:none}
-.event-row{display:flex;align-items:center;gap:16px;margin-bottom:24px;position:relative}
-.event-row:last-child{margin-bottom:0}
-.event-icon{width:48px;height:48px;border-radius:12px;background:rgba(212,168,83,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.event-icon svg{width:22px;height:22px;color:var(--gold)}
-.event-label{font-size:13px;color:var(--text-dim);margin-bottom:2px}
-.event-value{font-size:18px;font-weight:700}
-
-.countdown-wrap{text-align:center;margin-bottom:40px}
-.countdown{display:flex;gap:16px;justify-content:center;margin-top:16px}
-.countdown-item{background:var(--bg-card);border:1px solid var(--border-gold);border-radius:12px;padding:16px 24px;min-width:80px}
-.countdown-num{font-size:36px;font-weight:900;background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1}
-.countdown-label{font-size:13px;color:var(--text-dim);margin-top:4px}
-
-.ended-banner{display:none;background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:40px;text-align:center}
-.ended-banner h3{font-size:24px;font-weight:700;margin-bottom:12px}
-.ended-banner p{color:var(--text-muted);font-size:16px}
-
-.tip-box{background:rgba(212,168,83,0.08);border:1px solid rgba(212,168,83,0.2);border-radius:12px;padding:20px 24px;margin:20px 0;display:flex;gap:12px;align-items:flex-start}
-.tip-box svg{width:20px;height:20px;color:var(--gold);flex-shrink:0;margin-top:4px}
-.tip-box p{color:var(--text-muted);font-size:15px;line-height:1.6}
-.tip-box strong{color:var(--gold)}
-
-.faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:12px;overflow:hidden;background:var(--bg-card)}
-.faq-q{padding:20px 24px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:16px;transition:color .2s}
-.faq-q:hover{color:var(--gold)}
-.faq-q svg{width:20px;height:20px;transition:transform .3s;flex-shrink:0;margin-right:12px}
-.faq-item.open .faq-q svg{transform:rotate(180deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
-.faq-item.open .faq-a{max-height:500px}
-.faq-a-inner{padding:0 24px 20px;color:var(--text-muted);font-size:15px;line-height:1.7}
-
-.topic-item{display:flex;align-items:center;gap:16px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin-bottom:12px;transition:border-color .2s}
-.topic-item:hover{border-color:var(--gold)}
-.topic-num{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:#000;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0}
-.topic-text h4{font-size:16px;font-weight:600;margin-bottom:4px}
-.topic-text p{color:var(--text-muted);font-size:14px}
-
-.level-badges{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:24px 0}
-.level-badge{padding:8px 20px;border-radius:100px;font-size:14px;font-weight:600}
-.level-badge.beginner{background:rgba(74,222,128,0.15);color:var(--green);border:1px solid rgba(74,222,128,0.3)}
-.level-badge.intermediate{background:rgba(96,165,250,0.15);color:var(--blue);border:1px solid rgba(96,165,250,0.3)}
-.level-badge.advanced{background:rgba(167,139,250,0.15);color:var(--purple);border:1px solid rgba(167,139,250,0.3)}
-
-.cta-section{text-align:center;padding:80px 20px;position:relative}
-.cta-section::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:400px;height:400px;background:radial-gradient(circle,rgba(212,168,83,0.1) 0%,transparent 70%);pointer-events:none}
-.cta-section h2{font-size:clamp(24px,4vw,36px);font-weight:800;margin-bottom:16px;position:relative}
-.cta-section p{color:var(--text-muted);font-size:17px;margin-bottom:32px;position:relative}
-
-.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:12px;font-family:'Heebo',sans-serif;font-size:16px;font-weight:600;text-decoration:none;transition:all .2s;position:relative;cursor:pointer}
-.btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:#000;border:none}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,168,83,0.3)}
-.btn-secondary{background:transparent;color:var(--text);border:1px solid var(--border)}
-.btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
-.btn-calendar{background:rgba(96,165,250,0.15);color:var(--blue);border:1px solid rgba(96,165,250,0.3)}
-.btn-calendar:hover{background:rgba(96,165,250,0.25);transform:translateY(-2px);box-shadow:0 8px 24px rgba(96,165,250,0.2)}
-
-.message-banner{background:linear-gradient(135deg,rgba(212,168,83,0.1),rgba(240,215,140,0.05));border:1px solid rgba(212,168,83,0.2);border-radius:16px;padding:32px;margin-bottom:40px;text-align:center}
-.message-banner h3{font-size:20px;font-weight:700;margin-bottom:12px;color:var(--gold)}
-.message-banner p{color:var(--text-muted);font-size:16px;line-height:1.7;max-width:550px;margin:0 auto}
-
-footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);color:var(--text-dim);font-size:14px}
-footer a{color:var(--gold);text-decoration:none}
-footer a:hover{text-decoration:underline}
-
-@media(max-width:640px){
-  .card-grid.cols-3{grid-template-columns:1fr}
-  .countdown{gap:8px}
-  .countdown-item{padding:12px 16px;min-width:64px}
-  .countdown-num{font-size:28px}
-  .event-details{padding:24px}
-  .section{padding:60px 16px}
-  .event-row{gap:12px}
+:root{
+  --accent:#FF6B35;
+  --accent-light:#FF8F65;
+  --accent-glow:rgba(255,107,53,0.15);
+  --bg:#0A0A0F;
+  --bg-elevated:#14141F;
+  --bg-card:#1A1A28;
+  --border:rgba(255,255,255,0.06);
+  --border-accent:rgba(255,107,53,0.2);
+  --text:#F8F8FC;
+  --text-secondary:rgba(248,248,252,0.6);
+  --text-dim:rgba(248,248,252,0.35);
+  --gradient-accent:linear-gradient(135deg,#FF6B35,#FF8F65,#FFB088);
+  --purple:#8B5CF6;
+  --blue:#3B82F6;
+  --green:#10B981;
 }
-@media(hover:none){.card:hover{transform:none}}
+html{scroll-behavior:auto}
+body{font-family:'Rubik',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+
+.lenis{height:auto}
+
+/* Grain overlay */
+body::before{
+  content:'';position:fixed;top:0;left:0;width:100%;height:100%;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:9999;opacity:.4
+}
+
+/* Smooth reveal animations */
+[data-reveal]{opacity:0;transform:translateY(40px);transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1)}
+[data-reveal].visible{opacity:1;transform:translateY(0)}
+[data-reveal-delay="1"]{transition-delay:0.1s}
+[data-reveal-delay="2"]{transition-delay:0.2s}
+[data-reveal-delay="3"]{transition-delay:0.3s}
+
+/* Hero */
+.hero{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 24px;position:relative;overflow:hidden}
+
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg .orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.4;animation:float 20s ease-in-out infinite}
+.hero-bg .orb-1{width:600px;height:600px;background:rgba(255,107,53,0.12);top:-200px;right:-200px;animation-delay:0s}
+.hero-bg .orb-2{width:500px;height:500px;background:rgba(139,92,246,0.08);bottom:-150px;left:-150px;animation-delay:-7s}
+.hero-bg .orb-3{width:300px;height:300px;background:rgba(59,130,246,0.06);top:40%;left:60%;animation-delay:-14s}
+@keyframes float{0%,100%{transform:translate(0,0)}25%{transform:translate(30px,-20px)}50%{transform:translate(-20px,30px)}75%{transform:translate(20px,20px)}}
+
+.hero-grid{position:absolute;inset:0;background-image:
+  linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);
+  background-size:60px 60px;opacity:.5}
+
+.hero-code{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Courier New',monospace;font-size:14px;color:rgba(255,107,53,0.06);white-space:pre;line-height:2;pointer-events:none;z-index:0}
+
+.hero-content{position:relative;z-index:2;max-width:800px}
+
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;background:rgba(255,107,53,0.08);border:1px solid rgba(255,107,53,0.2);border-radius:100px;font-size:13px;font-weight:500;color:var(--accent);margin-bottom:32px;backdrop-filter:blur(10px)}
+.badge-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse-dot 2s infinite}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.5)}}
+
+.live-badge{display:none;align-items:center;gap:8px;padding:8px 20px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:100px;font-size:14px;font-weight:600;color:#EF4444;margin-bottom:32px}
+.live-dot{width:8px;height:8px;background:#EF4444;border-radius:50%;animation:pulse-dot 1.5s infinite}
+
+.hero-date{font-family:'Assistant',sans-serif;font-size:15px;color:var(--text-dim);margin-bottom:20px;letter-spacing:0.5px}
+.hero h1{font-size:clamp(36px,7vw,80px);font-weight:900;line-height:1.1;margin-bottom:24px;letter-spacing:-1px}
+.hero h1 .highlight{background:var(--gradient-accent);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-family:'Assistant',sans-serif;font-size:clamp(17px,2.5vw,22px);color:var(--text-secondary);max-width:580px;margin:0 auto 48px;font-weight:400;line-height:1.8}
+.hero-sub strong{color:var(--text);font-weight:600}
+
+.hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;border-radius:14px;font-family:'Rubik',sans-serif;font-size:16px;font-weight:600;text-decoration:none;transition:all .3s cubic-bezier(0.16,1,0.3,1);cursor:pointer;border:none;position:relative;overflow:hidden}
+.btn-primary{background:var(--gradient-accent);color:#fff;box-shadow:0 4px 24px rgba(255,107,53,0.25)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(255,107,53,0.35)}
+.btn-secondary{background:var(--bg-elevated);color:var(--text);border:1px solid var(--border)}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.btn svg{width:18px;height:18px}
+
+.scroll-indicator{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--text-dim);font-size:12px;letter-spacing:1px;text-transform:uppercase}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--accent),transparent);animation:scroll-anim 2s infinite}
+@keyframes scroll-anim{0%{opacity:0;transform:scaleY(0);transform-origin:top}50%{opacity:1;transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{opacity:0;transform:scaleY(0);transform-origin:bottom}}
+
+/* Parallax image sections */
+.parallax-section{position:relative;height:50vh;min-height:350px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin:0}
+.parallax-bg{position:absolute;inset:-20%;width:140%;height:140%;background-size:cover;background-position:center;will-change:transform}
+.parallax-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,15,0.7),rgba(10,10,15,0.85))}
+.parallax-content{position:relative;z-index:2;text-align:center;padding:40px 24px}
+.parallax-content h2{font-size:clamp(28px,5vw,52px);font-weight:800;margin-bottom:16px;letter-spacing:-0.5px}
+.parallax-content p{font-family:'Assistant',sans-serif;font-size:18px;color:var(--text-secondary);max-width:500px;margin:0 auto}
+
+/* Sections */
+.section{max-width:900px;margin:0 auto;padding:100px 24px}
+.section-tag{display:inline-flex;align-items:center;gap:8px;font-family:'Assistant',sans-serif;font-size:13px;color:var(--accent);text-transform:uppercase;letter-spacing:2px;font-weight:600;margin-bottom:16px}
+.section-tag::before{content:'';width:24px;height:1px;background:var(--accent)}
+.section h2{font-size:clamp(28px,5vw,48px);font-weight:800;margin-bottom:16px;line-height:1.2;letter-spacing:-0.5px}
+.section>p{font-family:'Assistant',sans-serif;color:var(--text-secondary);font-size:18px;margin-bottom:48px;max-width:600px;line-height:1.8}
+
+/* Message callout */
+.callout{background:var(--bg-elevated);border:1px solid var(--border);border-radius:20px;padding:40px;margin-bottom:64px;position:relative;overflow:hidden}
+.callout::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gradient-accent)}
+.callout h3{font-size:22px;font-weight:700;margin-bottom:12px}
+.callout p{font-family:'Assistant',sans-serif;color:var(--text-secondary);font-size:17px;line-height:1.8}
+.callout .emoji-big{font-size:32px;margin-bottom:16px;display:block}
+
+/* Event details */
+.event-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:48px}
+.event-item{background:var(--bg-elevated);border:1px solid var(--border);border-radius:16px;padding:24px;transition:border-color .3s}
+.event-item:hover{border-color:rgba(255,107,53,0.3)}
+.event-item-icon{width:40px;height:40px;border-radius:10px;background:var(--accent-glow);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.event-item-icon svg{width:20px;height:20px;color:var(--accent)}
+.event-item-label{font-family:'Assistant',sans-serif;font-size:13px;color:var(--text-dim);margin-bottom:4px}
+.event-item-value{font-size:17px;font-weight:600}
+
+/* Countdown */
+.countdown-wrap{text-align:center;margin:64px 0}
+.countdown{display:flex;gap:12px;justify-content:center;margin-top:20px}
+.countdown-item{background:var(--bg-elevated);border:1px solid var(--border);border-radius:16px;padding:20px 28px;min-width:90px;position:relative;overflow:hidden}
+.countdown-item::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gradient-accent);opacity:.5}
+.countdown-num{font-size:40px;font-weight:900;background:var(--gradient-accent);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1}
+.countdown-label{font-family:'Assistant',sans-serif;font-size:12px;color:var(--text-dim);margin-top:6px;text-transform:uppercase;letter-spacing:1px}
+
+.ended-banner{display:none;background:var(--bg-elevated);border:1px solid var(--border);border-radius:20px;padding:48px;text-align:center}
+.ended-banner h3{font-size:24px;font-weight:700;margin-bottom:12px}
+.ended-banner p{color:var(--text-secondary);font-size:16px}
+
+/* Topics */
+.topics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.topic-card{background:var(--bg-elevated);border:1px solid var(--border);border-radius:16px;padding:28px;transition:all .3s cubic-bezier(0.16,1,0.3,1);position:relative;overflow:hidden}
+.topic-card:hover{border-color:rgba(255,107,53,0.3);transform:translateY(-4px)}
+.topic-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gradient-accent);opacity:0;transition:opacity .3s}
+.topic-card:hover::after{opacity:1}
+.topic-num{font-size:48px;font-weight:900;background:var(--gradient-accent);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:12px;opacity:.5}
+.topic-card h4{font-size:18px;font-weight:700;margin-bottom:8px}
+.topic-card p{font-family:'Assistant',sans-serif;color:var(--text-secondary);font-size:15px;line-height:1.6}
+
+/* How it works */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.step{text-align:center;padding:32px 20px}
+.step-icon{width:64px;height:64px;border-radius:50%;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-size:28px}
+.step-icon.orange{background:rgba(255,107,53,0.1);border:1px solid rgba(255,107,53,0.2)}
+.step-icon.purple{background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2)}
+.step-icon.blue{background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2)}
+.step h4{font-size:18px;font-weight:700;margin-bottom:8px}
+.step p{font-family:'Assistant',sans-serif;color:var(--text-secondary);font-size:15px;line-height:1.6}
+
+/* FAQ */
+.faq-item{border:1px solid var(--border);border-radius:14px;margin-bottom:12px;overflow:hidden;background:var(--bg-elevated);transition:border-color .3s}
+.faq-item:hover{border-color:rgba(255,107,53,0.2)}
+.faq-q{padding:22px 28px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:16px;transition:color .2s;gap:16px}
+.faq-q:hover{color:var(--accent)}
+.faq-q svg{width:20px;height:20px;transition:transform .3s;flex-shrink:0;color:var(--text-dim)}
+.faq-item.open .faq-q svg{transform:rotate(180deg);color:var(--accent)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(0.16,1,0.3,1)}
+.faq-item.open .faq-a{max-height:500px}
+.faq-a-inner{padding:0 28px 22px;font-family:'Assistant',sans-serif;color:var(--text-secondary);font-size:16px;line-height:1.8}
+
+/* CTA */
+.cta-section{text-align:center;padding:120px 24px;position:relative}
+.cta-section::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(255,107,53,0.08) 0%,transparent 70%);pointer-events:none}
+.cta-section h2{font-size:clamp(28px,5vw,44px);font-weight:800;margin-bottom:16px;position:relative}
+.cta-section p{font-family:'Assistant',sans-serif;color:var(--text-secondary);font-size:18px;margin-bottom:40px;position:relative}
+
+.calendar-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+
+/* Footer */
+footer{text-align:center;padding:48px 24px;border-top:1px solid var(--border)}
+footer .footer-name{font-size:15px;color:var(--text-secondary);margin-bottom:8px}
+footer .footer-name a{color:var(--accent);text-decoration:none;font-weight:500}
+footer .footer-name a:hover{text-decoration:underline}
+footer .footer-sub{font-size:13px;color:var(--text-dim)}
+
+/* Responsive */
+@media(max-width:768px){
+  .steps{grid-template-columns:1fr;gap:16px}
+  .topics-grid{grid-template-columns:1fr}
+  .countdown{gap:8px}
+  .countdown-item{padding:14px 18px;min-width:70px}
+  .countdown-num{font-size:32px}
+  .event-grid{grid-template-columns:1fr}
+  .section{padding:80px 20px}
+  .parallax-section{height:40vh;min-height:280px}
+  .hero h1{letter-spacing:0}
+  .callout{padding:28px}
+}
+@media(hover:none){.topic-card:hover{transform:none}}
 </style>
 </head>
 <body>
 
 <div class="hero">
-  <div class="community-badge" id="communityBadge">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/></svg>
-    לחברי הקהילה בלבד
+  <div class="hero-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
   </div>
-  <div class="live-badge" id="liveBadge">
-    <div class="live-dot"></div>
-    LIVE עכשיו
+  <div class="hero-grid"></div>
+  <pre class="hero-code">claude --model opus "refactor auth middleware"
+> Reading 47 files...
+> Analyzing dependencies...
+> Creating plan...
+
+const agent = new ClaudeCode({
+  model: "opus",
+  tools: ["read", "edit", "bash"],
+  permissions: { allowedPaths: ["src/"] }
+});
+
+await agent.run("fix the failing tests");
+// ✓ 23 tests passing</pre>
+
+  <div class="hero-content">
+    <div class="badge" id="communityBadge">
+      <div class="badge-dot"></div>
+      לחברי הקהילה בלבד
+    </div>
+    <div class="live-badge" id="liveBadge">
+      <div class="live-dot"></div>
+      LIVE עכשיו
+    </div>
+    <div class="hero-date">יום רביעי, 6 במאי 2026 | 19:00</div>
+    <h1>שאלו <span class="highlight">הכל.</span><br>בלי פילטרים.</h1>
+    <p class="hero-sub">שעה שלמה של Q&A לחברי הקהילה. <strong>כל שאלה.</strong> גם הכי בסיסית. גם הכי מפגרת. אנחנו שם בשבילכם.</p>
+    <div class="hero-cta">
+      <a href="#" class="btn btn-primary" onclick="addToGoogleCalendar();return false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        הוספה ליומן
+      </a>
+      <a href="#details" class="btn btn-secondary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        פרטים מלאים
+      </a>
+    </div>
   </div>
-  <div class="hero-date">יום רביעי 6 במאי 2026 | 19:00 — 20:00</div>
-  <h1>שעת <span>שאלות ותשובות</span><br>לחברי הקהילה</h1>
-  <p>שעה שלמה שבה אתם שואלים כל מה שבא לכם על Claude Code ואני עונה. בלי מצגות, בלי הרצאות. רק אתם, השאלות, והתשובות.</p>
-  <div class="scroll-hint">
-    גלול למטה
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
   </div>
 </div>
 
-<div class="section">
-  <div class="message-banner">
-    <h3>מפגש בלעדי לקהילה</h3>
-    <p>המפגש הזה הוא רק לחברי קהילת "Claude Code הקהילה". שעה שלמה שבה אני עונה על כל שאלה שתעלה. מהתקנה ועד אוטומציות מתקדמות. כל שאלה לגיטימית, כל רמה מוזמנת.</p>
-  </div>
-
-  <div class="section-label">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-    פרטי האירוע
-  </div>
-  <h2>מתי ואיפה?</h2>
-
-  <div class="event-details">
-    <div class="event-row">
-      <div class="event-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-      <div><div class="event-label">תאריך</div><div class="event-value">יום רביעי, 6 במאי 2026</div></div>
-    </div>
-    <div class="event-row">
-      <div class="event-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-      <div><div class="event-label">שעה</div><div class="event-value">19:00 — 20:00 (שעון ישראל)</div></div>
-    </div>
-    <div class="event-row">
-      <div class="event-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg></div>
-      <div><div class="event-label">פלטפורמה</div><div class="event-value">Zoom (קישור יישלח לחברי הקהילה)</div></div>
-    </div>
-    <div class="event-row">
-      <div class="event-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/></svg></div>
-      <div><div class="event-label">קהל יעד</div><div class="event-value">חברי קהילת Claude Code הקהילה בלבד</div></div>
-    </div>
-    <div class="event-row">
-      <div class="event-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
-      <div><div class="event-label">רמה</div><div class="event-value">כל הרמות. מתחילים עד מתקדמים.</div></div>
-    </div>
-  </div>
-
-  <div class="level-badges">
-    <span class="level-badge beginner">מתחילים</span>
-    <span class="level-badge intermediate">בינוניים</span>
-    <span class="level-badge advanced">מתקדמים</span>
-  </div>
-
-  <div class="tip-box">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-    <p><strong>הקהילה שלכם, השאלות שלכם.</strong> כל מה שרציתם לדעת על Claude Code ולא מצאתם תשובה. מהתקנה בסיסית ועד אוטומציות מורכבות. שאלו והכל ייענה.</p>
+<!-- Parallax divider -->
+<div class="parallax-section" data-parallax>
+  <div class="parallax-bg" style="background-image:url('https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=1600&q=80');"></div>
+  <div class="parallax-overlay"></div>
+  <div class="parallax-content">
+    <h2 data-reveal>אין שאלות טיפשיות.</h2>
+    <p data-reveal data-reveal-delay="1">יש רק שאלות שלא שואלים. וזה בדיוק למה אנחנו פה.</p>
   </div>
 </div>
 
-<div class="section" style="padding-top:0">
-  <div class="countdown-wrap" id="countdownSection">
-    <div class="section-label" style="justify-content:center">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-      ספירה לאחור
+<div class="section" id="details">
+  <div data-reveal>
+    <div class="callout">
+      <div class="emoji-big"></div>
+      <h3>גם אם אתה לא יודע מה זה Terminal</h3>
+      <p>המפגש הזה הוא בשבילך. לא משנה באיזו רמה אתה. לא משנה כמה זמן אתה משתמש ב-Claude Code. שאל, תקבל תשובה. נקודה. בלי שיפוט, בלי "תחפש בגוגל". שעה שבה הבמה שלכם.</p>
     </div>
-    <h2 style="text-align:center;margin-bottom:24px" id="countdownTitle">עוד כמה נשאר?</h2>
+  </div>
+
+  <div data-reveal>
+    <div class="section-tag">פרטי האירוע</div>
+    <h2>מתי ואיפה?</h2>
+  </div>
+
+  <div class="event-grid" data-reveal data-reveal-delay="1">
+    <div class="event-item">
+      <div class="event-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+      <div class="event-item-label">תאריך</div>
+      <div class="event-item-value">יום רביעי, 6 במאי 2026</div>
+    </div>
+    <div class="event-item">
+      <div class="event-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <div class="event-item-label">שעה</div>
+      <div class="event-item-value">19:00 — 20:00</div>
+    </div>
+    <div class="event-item">
+      <div class="event-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg></div>
+      <div class="event-item-label">פלטפורמה</div>
+      <div class="event-item-value">Zoom</div>
+    </div>
+    <div class="event-item">
+      <div class="event-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <div class="event-item-label">קהל יעד</div>
+      <div class="event-item-value">חברי הקהילה בלבד</div>
+    </div>
+  </div>
+
+  <div class="countdown-wrap" id="countdownSection" data-reveal>
+    <div class="section-tag" style="justify-content:center">ספירה לאחור</div>
+    <h2 style="text-align:center;font-size:24px" id="countdownTitle">עוד כמה נשאר?</h2>
     <div class="countdown" id="countdown">
       <div class="countdown-item"><div class="countdown-num" id="days">--</div><div class="countdown-label">ימים</div></div>
       <div class="countdown-item"><div class="countdown-num" id="hours">--</div><div class="countdown-label">שעות</div></div>
@@ -216,140 +311,214 @@ footer a:hover{text-decoration:underline}
     <p>תודה לכל מי שהשתתף! סיכום המפגש יפורסם בקרוב בקהילה.</p>
   </div>
 
-  <div style="text-align:center;margin-top:32px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
-    <a href="#" class="btn btn-calendar" onclick="addToGoogleCalendar();return false">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+  <div class="calendar-btns" data-reveal>
+    <a href="#" class="btn btn-secondary" onclick="addToGoogleCalendar();return false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
       Google Calendar
     </a>
-    <a href="#" class="btn btn-calendar" onclick="downloadICS();return false">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Apple / Outlook (.ics)
+    <a href="#" class="btn btn-secondary" onclick="downloadICS();return false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Apple / Outlook
     </a>
   </div>
 </div>
 
-<div class="section">
-  <div class="section-label">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-    נושאים
-  </div>
-  <h2>על מה אפשר לשאול?</h2>
-  <p>על הכל. באמת הכל. אבל הנה כמה כיוונים:</p>
-
-  <div class="topic-item"><div class="topic-num">1</div><div class="topic-text"><h4>התקנה והגדרות</h4><p>CLAUDE.md, permissions, hooks, settings, MCP servers</p></div></div>
-  <div class="topic-item"><div class="topic-num">2</div><div class="topic-text"><h4>כתיבת Prompts</h4><p>איך לתת הוראות שעובדות, דפוסים מוכחים, טעויות נפוצות</p></div></div>
-  <div class="topic-item"><div class="topic-num">3</div><div class="topic-text"><h4>פרויקטים אמיתיים</h4><p>refactoring, ניווט בקוד, עבודה עם כמה קבצים, agent mode, sub-agents</p></div></div>
-  <div class="topic-item"><div class="topic-num">4</div><div class="topic-text"><h4>אוטומציות</h4><p>Git hooks, CI/CD, scripts, cron, workflows, שילוב עם כלים אחרים</p></div></div>
-  <div class="topic-item"><div class="topic-num">5</div><div class="topic-text"><h4>טיפים מתקדמים</h4><p>custom skills, context management, performance, multi-model strategies</p></div></div>
-  <div class="topic-item"><div class="topic-num">6</div><div class="topic-text"><h4>השאלה שלך</h4><p>משהו אחר? שאל ותיענה. אין מגבלות.</p></div></div>
-</div>
-
-<div class="section">
-  <div class="section-label">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
-    מה לצפות
-  </div>
-  <h2>איך זה יעבוד?</h2>
-  <div class="card-grid cols-3">
-    <div class="card"><div class="card-icon gold"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><h3>שואלים</h3><p>מקלידים שאלה בצ'אט או פותחים מיקרופון. כל שאלה מתקבלת, כל רמה.</p></div>
-    <div class="card"><div class="card-icon green"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div><h3>מדגימים</h3><p>לא רק מסבירים, מראים. Live demo על שאלות שדורשות הדגמה בקוד.</p></div>
-    <div class="card"><div class="card-icon blue"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg></div><h3>מסכמים</h3><p>אחרי המפגש תקבלו סיכום עם כל השאלות, התשובות, והקישורים.</p></div>
+<!-- Parallax divider 2 -->
+<div class="parallax-section" data-parallax>
+  <div class="parallax-bg" style="background-image:url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1600&q=80');"></div>
+  <div class="parallax-overlay"></div>
+  <div class="parallax-content">
+    <h2 data-reveal>שעה אחת.<br>אפס מגבלות.</h2>
+    <p data-reveal data-reveal-delay="1">שאלות על הכל. התקנה, prompts, agents, אוטומציות, פרויקטים אמיתיים.</p>
   </div>
 </div>
 
 <div class="section">
-  <div class="section-label">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
-    שאלות נפוצות
+  <div data-reveal>
+    <div class="section-tag">נושאים</div>
+    <h2>על מה אפשר לשאול?</h2>
+    <p>על הכל. באמת. אבל הנה כמה כיוונים:</p>
   </div>
-  <h2>FAQ</h2>
-  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">צריך להכין משהו מראש?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="faq-a"><div class="faq-a-inner">לא חובה. אפשר לבוא עם שאלות מוכנות ואפשר לבוא ולהקשיב. אם יש לך שאלה ספציפית, עדיף לחשוב עליה מראש כדי שנוכל לתת תשובה מדויקת יותר.</div></div></div>
-  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">אני ממש מתחיל, מתאים לי?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="faq-a"><div class="faq-a-inner">בהחלט. אין שאלה בסיסית מדי. אם התקנת Claude Code אתמול ולא יודע מאיפה להתחיל, זה בדיוק המקום. כל תשובה תהיה מותאמת לרמה שלך.</div></div></div>
-  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">האם יהיה הקלטה?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="faq-a"><div class="faq-a-inner">כן. המפגש יוקלט ויפורסם בקהילה לחברים שלא הספיקו להגיע. בנוסף, יפורסם סיכום כתוב עם כל השאלות והתשובות.</div></div></div>
-  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">צריך לפתוח מצלמה?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="faq-a"><div class="faq-a-inner">לא חובה בכלל. אפשר להשתתף רק עם טקסט בצ'אט, רק עם מיקרופון, או עם מצלמה. איך שנוח לך.</div></div></div>
-  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">אפשר לשאול על פרויקט ספציפי שלי?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="faq-a"><div class="faq-a-inner">כן, אפשר לשתף מסך ולהראות את הבעיה. נעזור לך בזמן אמת. רק שים לב לא לחשוף מידע רגיש על המסך.</div></div></div>
-  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">מה ההבדל מהמפגש הפתוח?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="faq-a"><div class="faq-a-inner">המפגש הזה הוא בלעדי לחברי הקהילה. זה אומר קבוצה קטנה יותר, יותר זמן לכל שאלה, ואפשרות להעמיק יותר בנושאים מתקדמים. איכות מול כמות.</div></div></div>
+
+  <div class="topics-grid">
+    <div class="topic-card" data-reveal><div class="topic-num">01</div><h4>התקנה והגדרות</h4><p>CLAUDE.md, permissions, hooks, settings, MCP servers</p></div>
+    <div class="topic-card" data-reveal data-reveal-delay="1"><div class="topic-num">02</div><h4>כתיבת Prompts</h4><p>איך לתת הוראות שעובדות, דפוסים מוכחים, טעויות נפוצות</p></div>
+    <div class="topic-card" data-reveal data-reveal-delay="2"><div class="topic-num">03</div><h4>פרויקטים אמיתיים</h4><p>refactoring, ניווט בקוד, multi-file, agent mode, sub-agents</p></div>
+    <div class="topic-card" data-reveal data-reveal-delay="3"><div class="topic-num">04</div><h4>אוטומציות</h4><p>Git hooks, CI/CD, scripts, cron, workflows, אינטגרציות</p></div>
+    <div class="topic-card" data-reveal><div class="topic-num">05</div><h4>טיפים מתקדמים</h4><p>custom skills, context management, performance, models</p></div>
+    <div class="topic-card" data-reveal data-reveal-delay="1"><div class="topic-num">06</div><h4>השאלה שלך</h4><p>משהו אחר לגמרי? שאל. הכל פתוח.</p></div>
+  </div>
+</div>
+
+<div class="section">
+  <div data-reveal>
+    <div class="section-tag">איך זה עובד</div>
+    <h2>פשוט. בלי סיבוכים.</h2>
+  </div>
+
+  <div class="steps" data-reveal>
+    <div class="step">
+      <div class="step-icon orange">?</div>
+      <h4>שואלים</h4>
+      <p>מקלידים בצ'אט או פותחים מיקרופון. כל שאלה, כל רמה.</p>
+    </div>
+    <div class="step">
+      <div class="step-icon purple">&gt;_</div>
+      <h4>מדגימים</h4>
+      <p>לא רק מסבירים. Live demo על שאלות שצריכות הדגמה.</p>
+    </div>
+    <div class="step">
+      <div class="step-icon blue">&check;</div>
+      <h4>מסכמים</h4>
+      <p>אחרי המפגש: סיכום מלא עם שאלות, תשובות, וקישורים.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Parallax divider 3 -->
+<div class="parallax-section" data-parallax>
+  <div class="parallax-bg" style="background-image:url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1600&q=80');"></div>
+  <div class="parallax-overlay"></div>
+  <div class="parallax-content">
+    <h2 data-reveal>Claude Code הקהילה</h2>
+    <p data-reveal data-reveal-delay="1">המקום שבו מפתחים עוזרים אחד לשני להפיק את המקסימום.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div data-reveal>
+    <div class="section-tag">שאלות נפוצות</div>
+    <h2>FAQ</h2>
+  </div>
+
+  <div data-reveal>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">צריך להכין משהו מראש?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="faq-a"><div class="faq-a-inner">לא חובה. אפשר לבוא עם שאלות מוכנות ואפשר לבוא ולהקשיב. אם יש לך שאלה ספציפית, עדיף לחשוב עליה מראש כדי שנוכל לתת תשובה מדויקת יותר.</div></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">אני ממש מתחיל, מתאים לי?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="faq-a"><div class="faq-a-inner">בהחלט. אין שאלה בסיסית מדי. אם התקנת Claude Code אתמול ולא יודע מאיפה להתחיל, זה בדיוק המקום. כל תשובה תהיה מותאמת לרמה שלך.</div></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">האם יהיה הקלטה?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="faq-a"><div class="faq-a-inner">כן. המפגש יוקלט ויפורסם בקהילה לחברים שלא הספיקו להגיע. בנוסף, יפורסם סיכום כתוב עם כל השאלות והתשובות.</div></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">צריך לפתוח מצלמה?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="faq-a"><div class="faq-a-inner">לא חובה בכלל. אפשר להשתתף רק עם טקסט בצ'אט, רק עם מיקרופון, או עם מצלמה. איך שנוח לך.</div></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">אפשר לשאול על פרויקט ספציפי שלי?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="faq-a"><div class="faq-a-inner">כן, אפשר לשתף מסך ולהראות את הבעיה. נעזור לך בזמן אמת. רק שים לב לא לחשוף מידע רגיש על המסך.</div></div></div>
+  </div>
 </div>
 
 <div class="cta-section">
-  <h2>נתראה ביום רביעי?</h2>
-  <p>שעה אחת שיכולה לחסוך לך שבועות של ניסוי וטעייה.</p>
-  <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+  <h2 data-reveal>נתראה ביום רביעי?</h2>
+  <p data-reveal data-reveal-delay="1">שעה אחת שיכולה לחסוך לך שבועות של ניסוי וטעייה.</p>
+  <div data-reveal data-reveal-delay="2" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
     <a href="#" class="btn btn-primary" onclick="addToGoogleCalendar();return false">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
       הוספה ליומן
-    </a>
-    <a href="https://shaharelhadad.github.io/claude-code-tips/" class="btn btn-secondary" target="_blank">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2zM22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
-      הטיפים היומיים
     </a>
   </div>
 </div>
 
 <footer>
-  <p>נוצר על ידי <a href="https://instagram.com/shahar.elhadad" target="_blank">שחר אלחדד</a></p>
-  <p style="margin-top:8px">Claude Code הקהילה | Q&A בלעדי | 6 במאי 2026</p>
+  <p class="footer-name">נוצר על ידי <a href="https://instagram.com/shahar_elhadad" target="_blank">שחר אלחדד</a></p>
+  <p class="footer-sub">Claude Code הקהילה | Q&A בלעדי | 6 במאי 2026</p>
 </footer>
 
+<!-- Lenis Smooth Scroll -->
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 <script>
-function toggleFaq(el){var item=el.parentElement;var wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open')});if(!wasOpen)item.classList.add('open')}
+const lenis = new Lenis({
+  duration: 1.2,
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  smoothWheel: true
+});
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+requestAnimationFrame(raf);
 
-var eventStart=new Date('2026-05-06T19:00:00+03:00');
-var eventEnd=new Date('2026-05-06T20:00:00+03:00');
+// Parallax
+const parallaxSections = document.querySelectorAll('[data-parallax]');
+function updateParallax() {
+  parallaxSections.forEach(section => {
+    const bg = section.querySelector('.parallax-bg');
+    const rect = section.getBoundingClientRect();
+    const scrollPercent = rect.top / window.innerHeight;
+    bg.style.transform = `translateY(${scrollPercent * 60}px)`;
+  });
+}
+lenis.on('scroll', updateParallax);
+updateParallax();
 
-function updateCountdown(){
-  var now=new Date();
-  var diff=eventStart-now;
-  var diffEnd=eventEnd-now;
+// Reveal on scroll
+const reveals = document.querySelectorAll('[data-reveal]');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+reveals.forEach(el => observer.observe(el));
 
-  if(diffEnd<=0){
-    document.getElementById('countdownSection').style.display='none';
-    document.getElementById('endedBanner').style.display='block';
-    document.getElementById('communityBadge').style.display='none';
-    document.getElementById('liveBadge').style.display='none';
+// FAQ
+function toggleFaq(el) {
+  var item = el.parentElement;
+  var wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+
+// Countdown
+var eventStart = new Date('2026-05-06T19:00:00+03:00');
+var eventEnd = new Date('2026-05-06T20:00:00+03:00');
+
+function updateCountdown() {
+  var now = new Date();
+  var diff = eventStart - now;
+  var diffEnd = eventEnd - now;
+
+  if (diffEnd <= 0) {
+    document.getElementById('countdownSection').style.display = 'none';
+    document.getElementById('endedBanner').style.display = 'block';
+    document.getElementById('communityBadge').style.display = 'none';
+    document.getElementById('liveBadge').style.display = 'none';
     return;
   }
 
-  if(diff<=0&&diffEnd>0){
-    document.getElementById('communityBadge').style.display='none';
-    document.getElementById('liveBadge').style.display='inline-flex';
-    document.getElementById('countdownTitle').textContent='\u05D4\u05DE\u05E4\u05D2\u05E9 \u05D1\u05E2\u05D9\u05E6\u05D5\u05DE\u05D5!';
-    var remaining=diffEnd;
-    var mins=Math.floor(remaining/(1000*60));
-    var secs=Math.floor((remaining%(1000*60))/1000);
-    document.getElementById('days').textContent='0';
-    document.getElementById('hours').textContent='0';
-    document.getElementById('minutes').textContent=mins;
-    document.getElementById('seconds').textContent=secs;
+  if (diff <= 0 && diffEnd > 0) {
+    document.getElementById('communityBadge').style.display = 'none';
+    document.getElementById('liveBadge').style.display = 'inline-flex';
+    document.getElementById('countdownTitle').textContent = '\u05D4\u05DE\u05E4\u05D2\u05E9 \u05D1\u05E2\u05D9\u05E6\u05D5\u05DE\u05D5!';
+    var remaining = diffEnd;
+    var mins = Math.floor(remaining / (1000 * 60));
+    var secs = Math.floor((remaining % (1000 * 60)) / 1000);
+    document.getElementById('days').textContent = '0';
+    document.getElementById('hours').textContent = '0';
+    document.getElementById('minutes').textContent = mins;
+    document.getElementById('seconds').textContent = secs;
     return;
   }
 
-  var d=Math.floor(diff/(1000*60*60*24));
-  var h=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-  var m=Math.floor((diff%(1000*60*60))/(1000*60));
-  var s=Math.floor((diff%(1000*60))/1000);
-  document.getElementById('days').textContent=d;
-  document.getElementById('hours').textContent=h;
-  document.getElementById('minutes').textContent=m;
-  document.getElementById('seconds').textContent=s;
+  var d = Math.floor(diff / (1000 * 60 * 60 * 24));
+  var h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  var s = Math.floor((diff % (1000 * 60)) / 1000);
+  document.getElementById('days').textContent = d;
+  document.getElementById('hours').textContent = h;
+  document.getElementById('minutes').textContent = m;
+  document.getElementById('seconds').textContent = s;
 }
 
 updateCountdown();
-setInterval(updateCountdown,1000);
+setInterval(updateCountdown, 1000);
 
-function addToGoogleCalendar(){
-  var title=encodeURIComponent('Claude Code \u05D4\u05E7\u05D4\u05D9\u05DC\u05D4 \u2014 \u05E9\u05E2\u05EA Q&A \u05D1\u05DC\u05E2\u05D3\u05D9\u05EA');
-  var details=encodeURIComponent('\u05DE\u05E4\u05D2\u05E9 Zoom \u05D1\u05DC\u05E2\u05D3\u05D9 \u05DC\u05D7\u05D1\u05E8\u05D9 \u05E7\u05D4\u05D9\u05DC\u05EA Claude Code \u05D4\u05E7\u05D4\u05D9\u05DC\u05D4.\n\u05E9\u05E2\u05D4 \u05E9\u05DC \u05E9\u05D0\u05DC\u05D5\u05EA \u05D5\u05EA\u05E9\u05D5\u05D1\u05D5\u05EA. \u05DB\u05DC \u05E9\u05D0\u05DC\u05D4 \u05DC\u05D2\u05D9\u05D8\u05D9\u05DE\u05D9\u05EA, \u05DB\u05DC \u05E8\u05DE\u05D4 \u05DE\u05D5\u05D6\u05DE\u05E0\u05EA.\n\n\u05E7\u05D9\u05E9\u05D5\u05E8 \u05DC-Zoom \u05D9\u05D9\u05E9\u05DC\u05D7 \u05DC\u05D7\u05D1\u05E8\u05D9 \u05D4\u05E7\u05D4\u05D9\u05DC\u05D4 \u05DC\u05E4\u05E0\u05D9 \u05D4\u05DE\u05E4\u05D2\u05E9.');
-  var location=encodeURIComponent('Zoom');
-  window.open('https://calendar.google.com/calendar/render?action=TEMPLATE&text='+title+'&details='+details+'&location='+location+'&dates=20260506T160000Z/20260506T170000Z','_blank');
+function addToGoogleCalendar() {
+  var title = encodeURIComponent('Claude Code \u05D4\u05E7\u05D4\u05D9\u05DC\u05D4 \u2014 \u05E9\u05E2\u05EA Q&A \u05D1\u05DC\u05E2\u05D3\u05D9\u05EA');
+  var details = encodeURIComponent('\u05DE\u05E4\u05D2\u05E9 Zoom \u05D1\u05DC\u05E2\u05D3\u05D9 \u05DC\u05D7\u05D1\u05E8\u05D9 \u05E7\u05D4\u05D9\u05DC\u05EA Claude Code \u05D4\u05E7\u05D4\u05D9\u05DC\u05D4.\n\u05E9\u05E2\u05D4 \u05E9\u05DC \u05E9\u05D0\u05DC\u05D5\u05EA \u05D5\u05EA\u05E9\u05D5\u05D1\u05D5\u05EA \u2014 \u05DB\u05DC \u05E9\u05D0\u05DC\u05D4 \u05DC\u05D2\u05D9\u05D8\u05D9\u05DE\u05D9\u05EA.\n\n\u05E7\u05D9\u05E9\u05D5\u05E8 \u05DC-Zoom \u05D9\u05D9\u05E9\u05DC\u05D7 \u05DC\u05D7\u05D1\u05E8\u05D9 \u05D4\u05E7\u05D4\u05D9\u05DC\u05D4.');
+  var location = encodeURIComponent('Zoom');
+  window.open('https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + title + '&details=' + details + '&location=' + location + '&dates=20260506T160000Z/20260506T170000Z', '_blank');
 }
 
-function downloadICS(){
-  var ics='BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Shahar Elhadad//Claude Code Community QA//HE\r\nBEGIN:VEVENT\r\nDTSTART:20260506T160000Z\r\nDTEND:20260506T170000Z\r\nSUMMARY:Claude Code \u05D4\u05E7\u05D4\u05D9\u05DC\u05D4 \u2014 \u05E9\u05E2\u05EA Q&A \u05D1\u05DC\u05E2\u05D3\u05D9\u05EA\r\nDESCRIPTION:\u05DE\u05E4\u05D2\u05E9 Zoom \u05D1\u05DC\u05E2\u05D3\u05D9 \u05DC\u05D7\u05D1\u05E8\u05D9 \u05E7\u05D4\u05D9\u05DC\u05EA Claude Code \u05D4\u05E7\u05D4\u05D9\u05DC\u05D4.\\n\u05E9\u05E2\u05D4 \u05E9\u05DC \u05E9\u05D0\u05DC\u05D5\u05EA \u05D5\u05EA\u05E9\u05D5\u05D1\u05D5\u05EA.\\n\u05E7\u05D9\u05E9\u05D5\u05E8 \u05DC-Zoom \u05D9\u05D9\u05E9\u05DC\u05D7 \u05DC\u05E4\u05E0\u05D9 \u05D4\u05DE\u05E4\u05D2\u05E9.\r\nLOCATION:Zoom\r\nSTATUS:CONFIRMED\r\nEND:VEVENT\r\nEND:VCALENDAR';
-  var blob=new Blob([ics],{type:'text/calendar;charset=utf-8'});
-  var link=document.createElement('a');
-  link.href=URL.createObjectURL(blob);
-  link.download='claude-code-community-qa-may6.ics';
+function downloadICS() {
+  var ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Shahar Elhadad//Claude Code Community QA//HE\r\nBEGIN:VEVENT\r\nDTSTART:20260506T160000Z\r\nDTEND:20260506T170000Z\r\nSUMMARY:Claude Code \u05D4\u05E7\u05D4\u05D9\u05DC\u05D4 \u2014 \u05E9\u05E2\u05EA Q&A \u05D1\u05DC\u05E2\u05D3\u05D9\u05EA\r\nDESCRIPTION:\u05DE\u05E4\u05D2\u05E9 Zoom \u05D1\u05DC\u05E2\u05D3\u05D9 \u05DC\u05D7\u05D1\u05E8\u05D9 \u05E7\u05D4\u05D9\u05DC\u05EA Claude Code \u05D4\u05E7\u05D4\u05D9\u05DC\u05D4.\\n\u05E9\u05E2\u05D4 \u05E9\u05DC \u05E9\u05D0\u05DC\u05D5\u05EA \u05D5\u05EA\u05E9\u05D5\u05D1\u05D5\u05EA.\\n\u05E7\u05D9\u05E9\u05D5\u05E8 \u05DC-Zoom \u05D9\u05D9\u05E9\u05DC\u05D7 \u05DC\u05E4\u05E0\u05D9 \u05D4\u05DE\u05E4\u05D2\u05E9.\r\nLOCATION:Zoom\r\nSTATUS:CONFIRMED\r\nEND:VEVENT\r\nEND:VCALENDAR';
+  var blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+  var link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'claude-code-community-qa-may6.ics';
   link.click();
   URL.revokeObjectURL(link.href);
 }
